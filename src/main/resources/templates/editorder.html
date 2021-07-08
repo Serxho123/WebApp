@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Order Detail</title>
+</head>
+<body>
+
+<div align="center" class="container" style=" margin:10px">
+
+    <form action="#" method="POST"
+          th:action="@{/saveOrder}" th:object="${order}">
+        <h2>Update Order Detail</h2>
+        <div><label>Order Id: <input readonly="true" th:field="*{orderId}" type="number"/></label></div>
+        <div><label>User Id: <input class="flase" th:field="*{userId}" type="number"/> </label></div>
+        <div><label>Order Status:<input class="form-control mb-4 col-4" placeholder="SUCCESS OR FAIL"
+                                        th:field="*{orderStatus}"
+                                        type="text"/> </label></div>
+        <div><label>Create on:<input class="form-control mb-4 col-4" th:field="*{createdOn}" type="date"/> </label>
+        </div>
+        <div><label>Modified on:<input class="form-control mb-4 col-4" th:field="*{modifiedOn}" type="date"/> </label>
+        </div>
+        <div><label>Item Id: <input class="flase" th:field="*{itemId}" type="number"/> </label></div>
+        <div><label>Description: <input class="form-control mb-4 col-4" placeholder="Order Details"
+                                        th:field="*{orderDetail}"
+                                        type="text"/> </label></div>
+
+        <button class="btn btn-info col-2" type="submit">Update</button>
+    </form>
+
+</div>
+</body>
+</html>

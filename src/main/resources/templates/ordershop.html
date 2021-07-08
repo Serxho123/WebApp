@@ -1,0 +1,135 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="copy">
+   <center> <title>OrderShop</title> </center>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Sign Out"/>
+</form>
+<h1>
+    <strong>OrderShop</strong>
+</h1>
+<div align="center" class="container my-2">
+    <h2>Orders Records</h2>
+
+
+            <table border="1px solid black;" class="table table-striped table-responsive-md"
+                   style="align-items: center; text-align: center;">
+
+                <thead class="top">
+                <tr class="table-info">
+                    <td><b>Add</b></td>
+                    <td><b> Order ID</b></td>
+                    <td><b>user ID</b></td>
+                    <td><b>Order Status</b></td>
+                    <td><b>Created On</b></td>
+                    <td><b>completed On</b></td>
+                    <td><b>Item ID</b></td>
+                    <td><b>Order Detail</b></td>
+                    <td><b>Actions</b></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orders: ${viewOrders}">
+                    <td><div align="left">
+                        <a class="btn btn-primary btn-sm mb-3"
+                           th:href="@{/showNewOrderForm}"> <span
+                                class="glyphicon glyphicon-order"></span>&nbsp;New Order
+                        </a>
+                    </div></td>
+                    <td th:text="${orders.orderId}" width="20px"></td>
+                    <td th:text="${orders.userId}"></td>
+                    <td th:text="${orders.orderStatus}"></td>
+                    <td th:text="${orders.createdOn}"></td>
+                    <td th:text="${orders.modifiedOn}"></td>
+                    <td th:text="${orders.itemId}"></td>
+                    <td th:text="${orders.orderDetail}"></td>
+                    <td><a class="btn btn-primary"
+                           th:href="@{/updateOrder/{id}(id=${orders.orderId})}">Edit</a>
+                        <a class="btn btn-danger"
+                           th:href="@{/deleteOrder/{id}(id=${orders.orderId})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div align="center"><h2>Users Records</h2>
+            <table border="1" class="table table-striped table-responsive-md"
+                   style="align-items: center; text-align: center;">
+
+                <thead class="top">
+                <tr class="table-info">
+                    <td><b>Add</b></td>
+                    <td><b>Name</b></td>
+                    <td><b>Phone</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Description</b></td>
+                    <td><b>Actions</b></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="users: ${viewUsers}">
+                    <td><div align="center" class="container my-2">
+                        <div align="left">
+                            <a class="btn btn-primary btn-sm mb-3"
+                               th:href="@{/showNewUserForm}"> <span
+                                    class="glyphicon glyphicon-order"></span>&nbsp;New User
+                            </a>
+                        </div></td>
+                    <td th:text="${users.userName}"></td>
+                    <td th:text="${users.userPhone}"></td>
+                    <td th:text="${users.userEmail}"></td>
+                    <td th:text="${users.userOtherDetails}"></td>
+                    <td><a class="btn btn-primary"
+                           th:href="@{/updateUser/{id}(id=${users.userId})}">Edit</a>
+                        <a class="btn btn-danger"
+                           th:href="@{/deleteUser/{id}(id=${users.userId})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div align="center"><h2>Item List</h2>
+            <table border="1" class="table table-striped table-responsive-md"
+                   style="align-items: center; text-align: center;">
+
+                <thead class="top">
+                <tr class="table-info">
+                    <td><b>Add</b></td>
+                    <td><b>Name</b></td>
+                    <td><b>Detail</b></td>
+                    <td><b>Price</b></td>
+                    <td><b>Actions</b></td>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item: ${viewItems}">
+                    <td>
+                        <div align="center" class="container my-2">
+                            <div align="left">
+                                <a class="btn btn-primary btn-sm mb-3"
+                                   th:href="@{/showNewItemForm}"> <span
+                                        class="glyphicon glyphicon-order"></span>&nbsp;New Item
+                                </a>
+                            </div></td>
+                    <td th:text="${item.itemName}"></td>
+                    <td th:text="${item.itemDetail}"></td>
+                    <td th:text="${item.itemPrice}"></td>
+                    <td><a class="btn btn-primary"
+                           th:href="@{/updateItem/{id}(id=${item.itemId})}">Edit</a>
+                        <a class="btn btn-outline-secondary"
+                           th:href="@{/deleteItem/{id}(id=${item.itemId})}">Delete</a></td></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+</body>
+</html>

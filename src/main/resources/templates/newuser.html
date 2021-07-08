@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="copy">
+    <title>OrderShop</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+
+
+<div align="center" class="container">
+    <h1>
+        <strong> PURCHASE </strong>
+    </h1>
+    <hr>
+    <h2>Create New User</h2>
+    <form method="POST" th:action="@{/saveUser}"
+          th:object="${user}">
+
+        <input class="form-control mb-4 col-4"
+               placeholder="username" th:field="*{userName}"
+               type="text">
+
+        <input class="form-control mb-4 col-4"
+               placeholder="phone" th:field="*{userPhone}"
+               type="text">
+
+        <input class="form-control mb-4 col-4"
+               placeholder="email" th:field="*{userEmail}"
+               type="text">
+
+        <input class="form-control mb-4 col-4"
+               placeholder="Description" th:field="*{userOtherDetails}"
+               type="text">
+
+        <button class="btn btn-info col-2" type="submit">Save Order</button>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

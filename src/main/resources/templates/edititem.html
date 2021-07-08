@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Item Detail</title>
+</head>
+<body>
+
+<div align="center" class="container" style=" margin:10px">
+
+    <form action="#" method="POST"
+          th:action="@{/saveItem}" th:object="${item}">
+        <h2>Update Item Detail</h2>
+        <div><label>Item Name: <input class="form-control mb-4 col-4" th:field="*{itemName}" type="text"/></label></div>
+        <div><label>Item Detail: <input class="form-control mb-4 col-4" th:field="*{itemDetail}" type="text"/> </label></div>
+        <div><label>Item Price: <input class="form-control mb-4 col-4" th:field="*{itemPrice}" type="number"/> </label></div>
+
+        <button class="btn btn-info col-2" type="submit">Update</button>
+    </form>
+
+</div>
+</body>
+</html>

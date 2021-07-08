@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User Detail</title>
+</head>
+<body>
+
+<div align="center" class="container" style=" margin:10px">
+
+    <form action="#" method="POST"
+          th:action="@{/saveUser}" th:object="${user}">
+        <h2>Update User Detail</h2>
+        <div><label>User ID: <input readonly="true" th:field="*{userId}" type="number"/></label></div>
+        <div><label>Username: <input class="form-control mb-4 col-4" th:field="*{userName}" type="text"/> </label></div>
+        <div><label>PhoneNr : <input class="form-control mb-4 col-4" th:field="*{userPhone}" type="number"/> </label></div>
+        <div><label>Email: <input class="form-control mb-4 col-4" placeholder="Email"
+                                        th:field="*{userEmail}"
+                                        type="text"/> </label></div>
+        <div><label>UserDetails: <input class="form-control mb-4 col-4" th:field="*{userOtherDetails}" type="text"/> </label></div>
+
+        <button class="btn btn-info col-2" type="submit">Update</button>
+    </form>
+
+</div>
+</body>
+</html>
